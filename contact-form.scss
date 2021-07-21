@@ -1,0 +1,258 @@
+/*------------------------------------*\
+    Contact form
+\*------------------------------------*/
+
+.contact-form {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+
+    @include bp(small) {
+        padding-top: 6rem;
+    }
+    
+    @include bp(medium) {
+        justify-content: center;
+        width: 50%;
+        margin-left: auto;
+        margin-right: 0;
+        padding-top: 10rem;
+    }
+}
+
+    .contact-form__icon-wrapper {
+        position: relative;
+        @include radialGlow(circle, closest-side);
+        margin-bottom: 5.5rem;
+        width: 4.8rem;
+        height:4.8rem;
+
+        &::before {
+            transition: $transition;
+            height: 100%;
+            width: 100%;
+            opacity: 0.8;
+        }
+
+        @include bp(small) {
+            margin-bottom: 7.1rem;
+        }
+    }
+
+    .contact-form__icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        display: block;
+        width: 3rem;
+        height:2.6rem;
+        transform: translate(-50%, -50%);
+    }
+
+
+    .contact-form__wrap-ctrl {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        width: 100%;
+        @include clearfix;
+     
+    }
+
+        .contact-form__field-ctrl {
+            position: relative;
+            display: block;
+            width: 100%;
+            margin-bottom: 1rem;
+          
+            &:first-of-type {
+                margin-left: 0;
+            }
+
+            @include bp(small) {
+                width: 66.667%;
+            }
+        }
+
+            .contact-form__input-label {
+                position: absolute;
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                width: auto;
+                height: auto;
+                font-family: $f-mono;
+                text-transform: uppercase;
+                @include f-xs();
+                color: $c-primary;
+            }
+
+            .contact-form__field {
+                position: relative;
+                width: 100%;
+                height: auto;
+                background-color: transparent;
+                border: 0.1rem solid $c-tertiary;
+                appearance: none;
+                color: $c-lightest;
+                text-align: left;
+                padding: 2rem;
+                @include font-size(2rem, 2rem, 0, normal);
+
+                &:focus {
+                    outline: none;
+                    border: 0.1rem solid $c-primary;
+                }
+
+                &::placeholder {
+                    visibility: hidden;
+                }
+
+                &.error-highlight {
+                    border: 0.1rem solid red;
+
+                    &:focus {
+                        border: 0.1rem solid red;
+                    }
+                }
+
+                @include bp(small) {
+                    padding: 2.3rem;
+                    @include f-md();
+                }
+            }
+
+    .contact-form__recaptcha {
+        width:100%;
+        margin:4rem auto;
+        text-align: center;
+        div {
+            margin: 0 auto;
+            text-align:center!important;
+        }
+
+        @include bp(small) {
+            width: 66.667%;
+        }
+    }
+
+
+
+    .privacy {
+        position: relative;
+        display: block;
+        width: 100%;
+        padding: 0 1rem 0 1rem;
+        margin: 0 auto;
+
+        &.error-highlight {
+            
+            .privacy__label, 
+            a {
+                color: red;
+            }
+
+            .privacy__label {
+                &::before {
+                    border: 0.1rem solid red;
+                }
+            }
+        }
+
+        @include bp(small) {
+            width: 66.667%;
+        }
+    }
+
+        .privacy__field--checkbox {
+            display: none;
+            opacity: 0;
+            visibility: hidden;
+            margin-left: -999rem;
+
+            &:checked + .privacy__label {
+                &::before {
+                    background: url(../images/checked.svg) no-repeat center center;
+                    background-size: 1.6rem 1.6rem;
+                }
+            }
+        }
+
+        .privacy__label {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 2rem;
+            vertical-align: middle;
+
+            &::before {
+                content: "";
+                position: relative;
+                display: inline-block;
+                width: 2.6rem;
+                height: 2.6rem;
+                margin-bottom: 1rem;
+                border: 0.1rem solid $c-primary;
+                vertical-align: middle;
+                cursor: pointer;
+            }
+
+            &:hover {
+                &::before {
+                    @include elementGlow();
+                }
+            }
+        }
+
+            .privacy__text{
+                p {
+                    color: $c-primary;
+                    text-align: center;
+                    @include f-xs();
+                }
+
+                a {
+                    text-decoration: underline;
+                    display: inline;
+                    &:hover {
+                        text-decoration: none;
+                    }
+                }
+            }
+
+    .contact-form__error-responses{
+        position: relative;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        line-height: inherit;
+        text-align: center;
+        padding-top: 2rem;
+        margin-bottom: 5rem;
+        @include f-xs();
+        color: $c-primary;
+    }
+
+
+
+    .contact-form__submit-button {
+        position: relative;
+        display: block;
+        margin: 0 auto;
+        transition: $transition;
+        color: $c-font-dark;
+        padding: 0 5rem;
+        
+        &:focus {
+            outline: none;
+        }
+
+        @include bp(medium) {
+            padding: 0 7rem;
+        }
+    }
